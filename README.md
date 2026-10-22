@@ -4,6 +4,8 @@
 
 ![](images/desktop/操作系统网格图.jpg)
 
+# 目录
+- [B站演示视频](#b站演示视频)
 - [配置清单](#配置清单)
 - [为何选择这套配置](#为何选择这套配置)
   - [主板 + CPU](#主板--cpu)
@@ -55,17 +57,22 @@
   - [重启不断电](#重启不断电)
     - [10.4](#104-4)
     - [10.5-10.7](#105-107-3)
-    - [AppleLPC 加载](#applelpc-加载)
+  - [AppleLPC 加载](#applelpc-加载)
   - [SATA 控制器重命名](#sata-控制器重命名)
   - [Tiger 下不显示二级缓存信息](#tiger-下不显示二级缓存信息)
   - [Lion 下关于本机不显示年份信息](#lion-下关于本机不显示年份信息)
     - [确定原生年份信息](#确定原生年份信息)
       - [Mac Pro 1,1 和 Mac Pro 2,1](#mac-pro-11-和-mac-pro-21)
       - [其他机型](#其他机型)
+  - [10.4/10.5 启动无法绘制 Apple Logo 而回退到类似 -v 的模式](#104105-启动无法绘制-apple-logo-而回退到类似--v-的模式)
 - [引导器截图](#引导器截图)
   - [OpenCore (请允许我使用 AI 制作 4K OC Menu 图，OpenDuet 环境下 F10 截图，效果实在太差了)](#opencore-请允许我使用-ai-制作-4k-oc-menu-图openduet-环境下-f10-截图效果实在太差了)
 - [系统桌面截图](#系统桌面截图)
 
+
+# B站演示视频
+
+[多系统博物馆的最后拼图 —— Mac OS X Tiger-Mac OS X Lion+Windows 2000](https://www.bilibili.com/video/BV1uEnH6AEoH)
 
 # 配置清单
 
