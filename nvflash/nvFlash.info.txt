@@ -1,0 +1,120 @@
+
+NVIDIA Firmware Update Utility (Version 5.72)
+
+-- Primary Commands --
+Update firmware:            nvflash [options] <filename>
+Save firmware to file:      nvflash [options] --save <filename>
+Compare adapter firmware:   nvflash [options] --compare <filename>
+Update TV data:             nvflash [options] --tv <filename>
+Display version:            nvflash [options] --version [<filename>]
+Display firmware bytes:     nvflash [options] --display [bytes]
+Check for supported EEPROM: nvflash [options] --check
+Write protect EEPROM:       nvflash [options] --protecton
+Remove write protect:       nvflash [options] --protectoff
+Change soft straps:         nvflash [options] --straps=<straps>
+Set IEEE 1394 GUID:         nvflash [options] --guid=<guid>
+Set IEEE 1394 GUID source:  nvflash [options] --guidsource=<location>
+List adapters:              nvflash [options] --list
+List PCI firmware blocks:   nvflash [options] --pciblocks
+
+-- Commands and Options -- 
+help         ?            Display this screen.
+save         b <filename> Read EEPROM and save to <filename>.
+compare      k <filename> Read EEPROM and compare with <filename>.
+tv           x <filename> Transfer TV data from file to EEPROM.
+version      v <filename> Display file version and ~CRC32
+                             (if no filename, acts on display adapter).
+display      d [bytes]    Display 256 the first bytes of the EEPROM
+                             (default is 256 bytes)
+check        c            Check for supported EEPROM.
+protecton    w            Write protect EEPROM (only on some EEPROM's).
+protectoff   r            Remove EEPROM write protect (only on some EEPROM's).
+straps       m <straps>   Change soft straps.
+   format is: AND Mask 0, OR Mask 0, AND Mask 1, OR Mask 1
+guid         q <guid>     Set the IEEE 1394 GUID in the firmware image
+                          (GUID is in the form of 16 hex digits).
+guidsource   1 <location> Set the source of the IEEE 1394 GUID.
+                          main       - main EEPROM image
+                          dedicated  - separate serial EEPROM part
+list         a            List all NVIDIA display adapters found in the system.
+pciblocks                 List all the PCI ROM Images stored in the EEPROM.
+overridetype 5            Allow firmware and adapter PCI device ID mismatch.
+overridesub  6            Allow firmware and adapter PCI subsystem ID mismatch.
+reboot       y            Reboot the PC after other tasks completed.
+keepstraps   g            Keep the soft straps already present in the EEPROM
+                          after flashing the new image.
+romstrap     j            Override the ROM strap setting to allow flashing an 
+                          image when grounding the STRAP_SUB_VENDOR pin.
+                          This allows flashing a corrupted or erased EEPROM.  
+                          Note: Make sure there is a physical EEPROM present 
+                          when using this option
+index        i <index>    Force a specific device index.
+fwindex      F <fw index> Index of which firmware image to use from a firmware 
+                          bundle.
+auto         A            When possible, run without user intervention.
+directpci    n            Bypass the PCI BIOS.
+silence      s            Silence all audio beeps.
+beep         !            Beep to signal updating progress.
+nolight      l            Do not light keyboard LEDs.
+override     o <level>    Override safety check level:
+   default  unknown EEPROM | NV adapter aborts application.
+   level=1  unknown EEPROM acceptable for read operations.
+   level=2  unknown NV adapter acceptable for read operations.
+   level=3  Combined effect of 1,2 (cannot write to unknown EEPROM or adapter).
+log          L <log file> Create a log file.
+
+Use a single dash ("-") to use the single letter version of a command.
+Use a double dash ("--") to use the longer descriptive version of a command.
+Use equals ("=") to specify parameters, with separating commas (",").
+
+-- Sample Usage --
+nvflash --index=1 nv30nz.rom
+-- Supported EEPROM's --
+  AMD    AM29LV001B  128Kx8         2.7vV,   1B page, 16k blk, ID=(01,006D)
+  AMD     AM29LV010  128Kx8         2.7vV,   1B page, 16k blk, ID=(01,006E)
+  AMD    AM29LV001T  128Kx8         2.7vV,   1B page, 16k blk, ID=(01,00ED)
+Atmel      AT49F512   64Kx8  5.0,3.0,2.7V,   1B page,  0k blk, ID=(1F,0003)
+Atmel     AT49F001T  128Kx8          5.0V,   1B page,  0k blk, ID=(1F,0004)
+Atmel      AT49F001  128Kx8          5.0V,   1B page,  0k blk, ID=(1F,0005)
+Atmel  AT49BV/LV010  128Kx8      2.7-3.6V,   1B page,  0k blk, ID=(1F,0017)
+Atmel AT29LV/BV010A  128Kx8          3.0V, 128B page,  0k blk, ID=(1F,0035)
+Atmel     AT29LV512   64Kx8          3.0V, 128B page,  0k blk, ID=(1F,003D)
+Atmel     AT25F1024 1024Kx1S     2.7-3.6V, 256B page, 32k blk, ID=(1F,0040)
+Atmel      AT29C512   64Kx8          5.0V, 128B page,  0k blk, ID=(1F,005D)
+Atmel     AT25F1024 1024Kx1S     2.7-3.6V, 256B page, 32k blk, ID=(1F,0060)
+Atmel     AT25F512A  512Kx1S     2.7-3.6V, 128B page, 32k blk, ID=(1F,0065)
+Atmel      AT49F010  128Kx8          5.0V,   1B page,  0k blk, ID=(1F,0087)
+Atmel     AT29C010A  128Kx8          5.0V, 128B page,  0k blk, ID=(1F,00D5)
+Atmel     AT25DF021 2048Kx1S     2.3-3.6V, 256B page,  4k blk, ID=(1F,4300)
+Atmel     AT25DF041 4096Kx1S     2.3-3.6V, 256B page,  4k blk, ID=(1F,4401)
+Atmel     AT25FS010 1024Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(1F,6601)
+   ST        M25P05  512Kx1S     2.7-3.6V, 128B page, 32k blk, ID=(20,0005)
+   ST        M25P10 1024Kx1S     2.7-3.6V, 128B page, 32k blk, ID=(20,0010)
+   ST      M29W512B   64Kx8      2.7-3.6V,   1B page,  0k blk, ID=(20,0027)
+ Tenx      ICE25P05  512Kx1S     2.7-3.6V, 128B page, 32k blk, ID=(5E,0001)
+  PMC     Pm39LV512   64Kx8      3.0-3.6V,   1B page,  4k blk, ID=(9D,001B)
+  PMC     Pm39LV010  128Kx8      3.0-3.6V,   1B page,  4k blk, ID=(9D,001C)
+  PMC     Pm25LV512  512Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(9D,007B)
+  PMC     Pm25LV010 1024Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(9D,007C)
+  SST    SST29EE010  128Kx8          5.0V, 128B page,  0k blk, ID=(BF,0007)
+  SST SST29LE/VE010  128Kx8      2.9,2.7V, 128B page,  0k blk, ID=(BF,0008)
+  SST SST29LE/VE512   64Kx8      2.9,2.7V, 128B page,  0k blk, ID=(BF,003D)
+  SST    SST45VF010 1024Kx1S     3.0-3.6V,   1B page,  4k blk, ID=(BF,0042)
+  SST    SST25LF020 2048Kx1S     3.0-3.6V, 256B page,  4k blk, ID=(BF,0043)
+  SST    SST25LF040 4096Kx1S     3.0-3.6V, 256B page,  4k blk, ID=(BF,0044)
+  SST    SST25VF512  512Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(BF,0048)
+  SST    SST25VF010 1024Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(BF,0049)
+  SST    SST29EE512   64Kx8          5.0V, 128B page,  0k blk, ID=(BF,005D)
+  SST    SST39SF010  128Kx8          5.0V,   1B page,  4k blk, ID=(BF,00B5)
+  SST    SST39VF512   64Kx8      2.7-3.6V,   1B page,  4k blk, ID=(BF,00D4)
+  SST    SST39VF010  128Kx8      2.7-3.6V,   1B page,  4k blk, ID=(BF,00D5)
+   MX     MX29F001T  128Kx8          5.0V,   1B page,  0k blk, ID=(C2,0018)
+   MX     MX29F001B  128Kx8          5.0V,   1B page,  0k blk, ID=(C2,0019)
+   MX      MX25L512  512Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(C2,2010)
+   MX     MX25L1005 1024Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(C2,2011)
+   MX     MX25L2005 2048Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(C2,2012)
+   MX    MX25L4005A 4096Kx1S     2.7-3.6V, 256B page,  4k blk, ID=(C2,2013)
+WBond       W39L010  128Kx8          3.3V,   1B page,  4k blk, ID=(DA,0031)
+WBond       W39L512   64Kx8          3.3V,   1B page,  4k blk, ID=(DA,0038)
+WBond      W29C011A  128Kx8          5.0V, 128B page,  0k blk, ID=(DA,00C1)
+WBond      W29EE512   64Kx8          5.0V, 128B page,  0k blk, ID=(DA,00C8)

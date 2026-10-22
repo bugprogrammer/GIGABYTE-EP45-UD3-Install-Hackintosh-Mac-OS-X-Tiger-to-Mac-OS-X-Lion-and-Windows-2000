@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleIdentifier</key>
+	<string>local.wbx.AHCIPortNameInjector2</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>AHCI Controller Name Injector (class-match)</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>ICH10AHCI</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleAHCIPort</string>
+			<key>Chipset Name</key>
+			<string>ICH10 AHCI</string>
+			<key>IOClass</key>
+			<string>AppleAHCI</string>
+			<key>IOPCIClassMatch</key>
+			<string>0x01060100&amp;0xffffff00</string>
+			<key>IOPCIPrimaryMatch</key>
+			<string>0x3a228086</string>
+			<key>IOProbeScore</key>
+			<integer>2000</integer>
+			<key>IOProviderClass</key>
+			<string>IOPCIDevice</string>
+			<key>Vendor Name</key>
+			<string>Intel</string>
+		</dict>
+		<key>JMB363AHCI</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleAHCIPort</string>
+			<key>Chipset Name</key>
+			<string>JMB363 AHCI</string>
+			<key>IOClass</key>
+			<string>AppleAHCI</string>
+			<key>IOPCIClassMatch</key>
+			<string>0x01060100&amp;0xffffff00</string>
+			<key>IOPCIPrimaryMatch</key>
+			<string>0x2363197b</string>
+			<key>IOProbeScore</key>
+			<integer>2000</integer>
+			<key>IOProviderClass</key>
+			<string>IOPCIDevice</string>
+			<key>Vendor Name</key>
+			<string>JMicron</string>
+		</dict>
+	</dict>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.iokit.IOPCIFamily</key>
+		<string>1.0.0</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Local-Root</string>
+</dict>
+</plist>

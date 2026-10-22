@@ -1,0 +1,7 @@
+default 0
+timeout 0
+
+title Windows 2000
+find --set-root /ntldr
+if not "%@root%"=="(hd0,0)" map () (hd0) && map --hook
+chainloader /ntldr
