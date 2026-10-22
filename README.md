@@ -610,6 +610,12 @@
 
 - 将改好的 plist 文件覆盖到 \~/Library/Preferences 并重启，你会发现 Mac OS X Lion 的关于本机年份恢复了
 
+## 10.4/10.5 启动无法绘制 Apple Logo 而回退到类似 -v 的模式
+
+- 在 OpenCore 下加入如下设置
+  - UEFI->Output->UgaPassThrough: YES
+    ![](images/OpenCore/output.jpg)
+
 # 引导器截图
 
 ## OpenCore (请允许我使用 AI 制作 4K OC Menu 图，OpenDuet 环境下 F10 截图，效果实在太差了)
